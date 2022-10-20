@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Rotating text</title>
+</head>
+
+	<style>
+		/*this is just for practice so not adding any styling*/
+	</style>
+<body>
+	
+	<!-- creating button to trigger action-->
+	<button id="btn" onclick="textAnimation('target')"> Click to Rotate</button>
+	<!-- button to stop action -->
+	<button id="btn2" onclick="stopAnimation('target')">click to stop</button>
+	<!-- ratating text -->
+	<p id="target">Hello World </p>
+
+</body>
+
+	<script>
+		function textAnimation (id) {
+			element = document.getElementById(id);
+			textNode = element.childNodes[0]; // taking the very first child node - "Hello World"
+			text = textNode.data; // getting the nodes data - Hello World
+			start = setInterval(function(){
+				text = text[text.length - 1] + text.substring(0, text.length - 1);  // making the string to reform - dHello worl
+				textNode.data = text; //storing the value in element
+			}, 100);
+			return start;
+		}
+
+		// for stop rotating
+		function stopAnimation(id){
+			clearInterval(start);
+			textNode.data = "Hello World ";
+		}
+	</script>
+</html>
